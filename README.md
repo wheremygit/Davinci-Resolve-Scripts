@@ -19,44 +19,30 @@ https://github.com/user-attachments/assets/032bd35b-9f69-4b98-a275-6b8244826681
 * No separate audio tracks, no extra folders, and no temporary timelines.
 
 ---
-
 ## Script Dependencies
 
-To run either the **Smart Import** or **Smart Bin** scripts, ensure the following packages are installed on your system.
+To run either the **Import Media** or **Import Bin** scripts, ensure the following core packages are installed on your system via your package manager (`pacman`, `apt`, `dnf`, etc.):
 
-### Arch Linux Installation
-
-**For KDE Plasma / Qt Users:**
-
-```bash
-sudo pacman -S ffmpeg kdialog python
-
-```
-
-**For GNOME / GTK Users:**
-
-```bash
-sudo pacman -S ffmpeg zenity python
-
-```
+* **`python`** (Python 3.x is required to execute the automation scripts).
+* **`ffmpeg`** (Required to handle the video stream copying and real-time transcoding of the audio stream into lossless FLAC).
+* **`kdialog`** or **`zenity`** (Required for opening file/folder dialog windows cleanly).
 
 > [!IMPORTANT]
 > * **DaVinci Resolve Studio:** Blackmagic Design limits external Python scripting execution to the **Studio (paid)** version on Linux.
-> * **System GUI File Choosers:** The script dynamically checks for `zenity` or `kdialog` to open file/folder dialogs safely without blocking or crashing Resolve's interface thread.
-
----
 
 ## Installation & Setup
 
-### 1. Place the Scripts
-
-Move the `.py` files into DaVinci Resolve's dedicated utility scripts directory:
+### 1. Run the Installer
 
 ```bash
-mkdir -p ~/.local/share/DaVinciResolve/Fusion/Scripts/Utility/
-cp *.py ~/.local/share/DaVinciResolve/Fusion/Scripts/Utility/
+git clone https://github.com/wheremygit/DaVinci-Resolve-Smart-Importer.git
+cd DaVinci-Resolve-Smart-Importer
+chmod +x install.sh
+./install.sh
 
 ```
+
+The script will automatically verify your basic dependencies, build the necessary DaVinci Resolve directory paths, safely move the utilities into position, and apply standard execution permissions.
 
 ### 2. Run the Scripts in Resolve
 
@@ -66,9 +52,9 @@ cp *.py ~/.local/share/DaVinciResolve/Fusion/Scripts/Utility/
 
 > [!TIP]
 > ### 3. (Optional) Assign Keyboard Shortcuts
->
+> 
+> 
 > To speed up your workflow, you can map these scripts to keyboard shortcuts:
->
 > 1. Go to **DaVinci Resolve > Keyboard Customization**.
 > 2. Search for the name of your script (under the *Application > Workspace > Scripts* category).
 > 3. Assign your preferred shortcut key bind.
